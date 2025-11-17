@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Princess</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f8dff0;
+      font-family: 'Georgia', serif;
+    }
+
+    .letter-container, #collageSection {
+      background: #f5e6c8;
+      padding: 20px;
+      width: 90%;
+      max-width: 420px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border: 2px solid #e1c9a5;
+    }
+
+    .text {
+      font-size: 1.1rem;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      background: #000;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .collage-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .collage-grid > div {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="letter-container">
+    <div class="text" id="letter"></div><span class="cursor"></span>
+    <button id="nextBtn" style="display:none; margin-top:15px; padding:10px 20px; background:#e1c9a5; border:none; border-radius:8px; font-size:1rem; font-family:'Georgia', serif; box-shadow:0 3px 6px rgba(0,0,0,0.2);">Next ➜</button>
+  </div>
+
+  <script>
+    const text = `My dearest Princess Agrima 👑💖,
+
+I want to tell you everything… from the beginning, exactly how it happened, so you know how much you truly mean to me. 💗
+
+On the 5th, when I proposed to you, my heart was beating like crazy. Even though you didn’t agree that day, something inside me still felt warm… hopeful… connected. And then on the 6th, when you confessed to me… that moment became one of the sweetest memories of my life. ✨💞
+
+From that day, you became my princess… my cutie pie… the girl whose name makes my heart smile every single time. 💕
+
+But these past few days… I know I made you feel confused. I replied dry 😔, reacted dry, didn’t talk properly, kept posting 7–9 stories a day but didn’t text you. And then I even put a “bye” song in my notes… 😣
+
+What you don’t know is… I did all of that on purpose. 🙈
+Not to hurt you.
+Not to make you scared.
+But to surprise you today… to make Princess Day extra special for you. 🎀👑💗
+
+Still, I know it worried you. I know it made you feel like maybe I was losing interest. And I’m sorry for that, my love. 🥺💞
+
+Because the truth is the complete opposite.
+You’ve been on my mind the whole time… every hour… every moment. You’re the softness of my day, the warmth in my heart, the smile in my thoughts. 💓✨
+
+And when you wrote, “Remember, you’re only mine and no one else’s”… it stayed with me. It made me blush like an idiot 😳💕 and made me feel yours in a way no one else ever has.
+
+I’m yours, Agrima.
+Only yours. Forever. ♾️💘
+I’m not going anywhere.
+
+Happy Princess Day, my love 👑💗
+You will forever be my princess. 💞🌸✨`;
+
+    let i = 0;
+    const speed = 50;
+
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("letter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      } else {
+        document.getElementById("nextBtn").style.display = "block";
+      }
+    }
+
+    typeWriter();
+  </script>
+
+  <div id="collageSection" style="display:none; text-align:center;">
+    <h2 style="font-family:'Georgia', serif; font-size:1.5rem; margin-bottom:15px; color:#a67c52;">
+      For My Most Beautiful Princess 👑💗
+    </h2>
+    <div class="collage-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+      <div><img src="pic1.jpg"></div>
+      <div><img src="pic2.jpg"></div>
+      <div style="transform:rotate(-3deg);"><img src="pic3.jpg"></div>
+      <div style="transform:rotate(2deg);"><img src="pic4.jpg"></div>
+    </div>
+    <p style="margin-top:15px; font-size:1.2rem; font-family:'Georgia', serif;">Happy Princess Day my cutie pie and princess 💖💗💕💞💘💓</p>
+  </div>
+
+  <audio id="bgm" src="song.mp3"></audio>
+
+  <script>
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      document.querySelector('.letter-container').style.display = 'none';
+      document.getElementById('collageSection').style.display = 'block';
+
+      const bgm = document.getElementById('bgm');
+      bgm.currentTime = 181; // 3 mins 1 sec
+      bgm.playbackRate = 0.75; // slower speed
+      bgm.play();
+    });
+  </script>
+</body>
+</html>
